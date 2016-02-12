@@ -22,19 +22,22 @@ public class QueenBoard{
      *Helper method for solve. 
      */
     private boolean solveH(int col){
+	if(col >= board.length){
+	    return true;
+	}
 	for(int i = 0;i < board.length;i++){
-	    if(board[i][col] == 0){
-		addQueen(i, col);
+	    if(addQueen(i, col)){
 		return solveH(col++);
-	    }else if(i == board.length--){
-		for(int j = 0;j < board.length;j++){
-		    removeQueen(j, col--);
-		    board[j][col--] = -1;
-		    return solveH(col--);
-		}
+	    }
+	    if(board[i][col] == 1){
+		removeQueen(i, col);
 	    }
 	}
-	return false;
+	if(col == 0){
+	    return false;
+	}else{
+	    return solveH(col--);
+	}
     }
 
     public void printSolution(){
