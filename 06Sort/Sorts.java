@@ -28,7 +28,7 @@ public class Sorts{
 	}
     }
 
-    public void mergeSort(int[]data){
+    public void mergesort(int[]data){
 	int[]ary = mergeH(data);
 	for(int i = 0;i < data.length;i++){
 	    data[i] = ary[i];
