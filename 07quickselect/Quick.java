@@ -9,6 +9,7 @@ public class Quick{
 		ctr++;
 	    }
 	}
+	int index = ctr;
 	for(int i = 0;i < data.length;i++){
 	    if(data[i] == data[part]){
 		ary[ctr] = data[i];
@@ -22,7 +23,7 @@ public class Quick{
 	    }
 	}
 	data = ary;
-	return part;
+	return index;
     }
 	
 }
