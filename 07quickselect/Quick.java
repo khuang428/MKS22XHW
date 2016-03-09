@@ -25,5 +25,19 @@ public class Quick{
 	data = ary;
 	return index;
     }
-	
+
+    private static int quickselect(int[]data, int k, int left, int right){
+	int index = partition(data,left,right);
+	if(index == k){
+	    return data[k];
+	}
+	if(index < k){
+	    return quickselect(data,k,index + 1,right);
+	}
+	return quickselect(data,k,left,index - 1);
+    }
+
+    public static int quickselect(int[]data, int k){
+	return quickselect(data,k,0,data.length - 1);
+    }
 }
