@@ -28,14 +28,14 @@ public class Sorts{
 	}
     }
 
-    public void mergesort(int[]data){
+    public static void mergesort(int[]data){
 	int[]ary = mergeH(data);
 	for(int i = 0;i < data.length;i++){
 	    data[i] = ary[i];
 	}
     }
 
-    public int[]mergeH(int[]data){
+    private static int[]mergeH(int[]data){
 	if(data.length == 1){
 	    return data;
 	}
@@ -51,7 +51,7 @@ public class Sorts{
 	return merge(mergeH(m1),mergeH(m2));
     }
 
-    public int[]merge(int[]m1,int[]m2){
+    private static int[]merge(int[]m1,int[]m2){
 	int[]ary = new int[m1.length+m2.length];
 	int i = 0, j = 0;
 	while(i < m1.length || j < m2.length){
@@ -70,5 +70,8 @@ public class Sorts{
 	    }
 	}
 	return ary;
+    }
+    public static String name(){
+    	return "7,Huang,Karen"
     }
 }
