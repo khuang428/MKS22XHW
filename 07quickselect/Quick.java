@@ -61,4 +61,25 @@ public class Quick{
     public static void quickSortOld(int[]data){
 	quickSortOld(data,0,data.length - 1);
     }
+
+    
+    private static int[] partition(int[]data,int left,int right){
+    }
+
+    private static void quickSort(int[]data,int left,int right){
+	if(left != right){
+	     int[]index = partition(data,left,right);
+	     if(left != index[0]){
+		 quickSort(data,index[1] + 1,right);
+	     }
+	     if(right != index[1]){
+		 quickSort(data,left,index[0] - 1);
+	     }
+	}
+    }
+
+    public static void quickSort(int[]data){
+	quickSort(data,0,data.length - 1);
+    }
+
 }
