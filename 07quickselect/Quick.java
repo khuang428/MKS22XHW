@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Quick{
     
     private static void swap(int[]data,int a, int b){
@@ -6,7 +8,7 @@ public class Quick{
 	data[b] = temp;
     }
 
-    private static int partition(int[]data,int left, int right){
+    private static int partitionOld(int[]data,int left, int right){
 	int part = left +(int)(Math.random() * (right - left + 1));
 	int start = left + 1, end = right;
 	while(start < end){
@@ -26,37 +28,37 @@ public class Quick{
 	}
     }
 
-    private static int quickselect(int[]data, int k, int left, int right){
+    private static int quickselectOld(int[]data, int k, int left, int right){
 	if(left == right){
 	    return data[left];
 	}
-	int index = partition(data,left,right);
+	int index = partitionOld(data,left,right);
 	if(index == k){
 	    return data[k];
 	}
 	if(index < k){
-	    return quickselect(data,k,index + 1,right);
+	    return quickselectOld(data,k,index + 1,right);
 	}
-	return quickselect(data,k,left,index - 1);
+	return quickselectOld(data,k,left,index - 1);
     }
 
-    public static int quickselect(int[]data, int k){
-	return quickselect(data,k,0,data.length - 1);
+    public static int quickselectOld(int[]data, int k){
+	return quickselectOld(data,k,0,data.length - 1);
     }
 
     public static String name(){
 	return "7,Huang,Karen";
     }
 
-    private static void quickSort(int[]data,int left,int right){
+    private static void quickSortOld(int[]data,int left,int right){
 	if(left != right){
-	    int index = partition(data,left,right);
-	    quickSort(data,index + 1,right);
-	    quickSort(data,left,index - 1);
+	    int index = partitionOld(data,left,right);
+	    quickSortOld(data,index + 1,right);
+	    quickSortOld(data,left,index - 1);
 	}
     }
 
-    public static void quickSort(int[]data){
-	quickSort(data,0,data.length - 1);
+    public static void quickSortOld(int[]data){
+	quickSortOld(data,0,data.length - 1);
     }
 }
