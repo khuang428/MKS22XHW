@@ -64,17 +64,35 @@ public class Quick{
 
     
     private static int[] partition(int[]data,int left,int right){
+	int index =(int)((right - left + 1) * Math.random() + left);
+	int pivot = data[index];
+	swap(data,index,right);
+	int ctr = left, ctr2 = left;
+	while(left < right){
+	    if(data[left] < pivot){
+		swap(data,ctr,left);
+		ctr++;
+	    }
+	    left++;
+	}
+	int[]ary = new int[2];
+	ary[0] = ctr;
+	while(ctr < right){
+	    if(data[ctr] == pivot){
+		swap(data,ctr,ctr2);
+		ctr2++;
+	    }
+	    ctr++;
+	}
+	ary[1] = ctr2 - 1;
+	return ary;
     }
 
     private static void quickSort(int[]data,int left,int right){
-	if(left != right){
+	if(right - left >= 1){
 	     int[]index = partition(data,left,right);
-	     if(left != index[0]){
-		 quickSort(data,index[1] + 1,right);
-	     }
-	     if(right != index[1]){
-		 quickSort(data,left,index[0] - 1);
-	     }
+	     quickSort(data,index[1] + 1,right);
+       	     quickSort(data,left,index[0] - 1);
 	}
     }
 
