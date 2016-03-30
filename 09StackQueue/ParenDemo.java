@@ -1,48 +1,44 @@
 public class ParenDemo{
     public static boolean isMatching(String s){
-	MyStack<char> open;
-	for(i = 0;i < s.length();i++){
-	    if(isOpen(s.charAt(i))){
-		open.push(s.charAt(i));
+	MyStack<String> data = new MyStack<String>();
+	for(int i = 0;i < s.length();i++){
+	    if(s.substring(i,i + 1).equals("(") || 
+	       s.substring(i,i + 1).equals("{") ||
+	       s.substring(i,i + 1).equals("[") ||
+	       s.substring(i,i + 1).equals("<")){
+		data.push(s.substring(i,i + 1));
+	    }else if(s.substring(i,i + 1).equals(")")){
+		if(!data.isEmpty() && data.peek().equals("(")){
+		    data.pop();
+		}else{
+		    return false;
+		}
+	    }else if(s.substring(i,i + 1).equals("}")){
+		if(!data.isEmpty() && data.peek().equals("{")){
+		    data.pop();
+		}else{
+		    return false;
+		}
+	    }else if(s.substring(i,i + 1).equals("]")){
+		if(!data.isEmpty() && data.peek().equals("[")){
+		    data.pop();
+		}else{
+		    return false;
+		}
+	    }else if(s.substring(i,i + 1).equals(">")){
+		if(!data.isEmpty() && data.peek().equals("<")){
+		    data.pop();
+		}else{
+		    return false;
+		}
 	    }
-	    if(isClose(s.charAt(i)) && !matches(open,s.charAt(i))){
-		return false;
-	    }
 	}
-	if(open.isEmpty()){
+	if(data.size() == 0){
 	    return true;
 	}
 	return false;
     }
-
-    private static boolean isOpen(char c){
-	if(c == "{" || c == "[" || c == "(" || c == "<"){
-	    return true;
-	}
-	return false;
-    }
-
-    private static boolean isClose(char c){
-	if(c == "}" || c == "]" || c == ")" || c == ">"){
-	    return true;
-	}
-	return false;
-    }
-
-    private static boolean matches(MyStack<char> stack,char c){
-	if(stack.pop() == "{"){
-	    return c == "}";
-	}
-	if(stack.pop() == "["){
-	    return c == "]";
-	}
-	if(stack.pop() == "("){
-	    return c == ")";
-	}
-	if(stack.pop() == "<"){
-	    return c == ">";
-	}
-    }
+	    
     public static void main(String[]args){
 	String input = "()()(([[]]))";
 	if(args.length > 0){
