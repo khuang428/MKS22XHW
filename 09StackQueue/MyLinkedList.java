@@ -2,7 +2,7 @@ import java.util.*;
 public class MyLinkedList<T> implements Iterable<T>{
     private class LNode{
 	private T value;
-	private LNode next;
+	private LNode next,prev;
 	public LNode(T v){
 	    value = v;
 	}
@@ -12,6 +12,9 @@ public class MyLinkedList<T> implements Iterable<T>{
 	public LNode getNext(){
 	    return next;
 	}
+	public LNode getPrevious(){
+	    return prev;
+	}
 	public T setValue(T v){
 	    T old = value;
 	    value = v;
@@ -19,6 +22,9 @@ public class MyLinkedList<T> implements Iterable<T>{
 	}
 	public void setNext(LNode n){
 	    next = n;
+	}
+	public void setPrevious(LNode p){
+	    prev = p;
 	}
 	public String toString(){
 	    return value.toString();
