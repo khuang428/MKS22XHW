@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class MyQueue<T>{
-    private MyLinkedList<T> data;
+    private MyLinkedList<T> data = new MyLinkedList<T>();
 
     public MyQueue(){
     }
