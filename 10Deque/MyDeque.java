@@ -36,7 +36,7 @@ public class MyDeque<T>{
 	    }
 	    if(start != 0){
 		data[start - 1] = value;
-		start = start - 1;
+		start--;
 	    }else{
 		data[data.length - 1] = value;
 		start = data.length - 1;
@@ -50,6 +50,18 @@ public class MyDeque<T>{
 	    data[0] = value;
 	    start = 0;
 	    end = 0;
+	}else{
+	    if(size == data.length){
+		grow();
+	    }
+	    if(end != data.length - 1){
+		data[end + 1] = value;
+		end++;
+	    }else{
+		data[0] = value;
+		end = 0;
+	    }
 	}
+	size++;
     }
 }
