@@ -4,21 +4,21 @@ public class MyDeque<T>{
     private Object[]ary;
     private int start,end,size;
 
+    @SuppressWarnings("unchecked")
     public MyDeque(){
-	size = 0;
-	ary = new Object[5];
+	data = (T[]) new Object[10];
     }
     
     private void resize(){
-	Object[]ary2 = new Object[size * 2];
+	T[]ary2 = (T[])new Object[size * 2];
 	int ctr = 0;
 	for(int i = start;i < size;i++){
-	    ary2[ctr] = ary[i];
-	    ctr++;
-	}
-	for(int i = 0;i != start;i++){
-	    ary2[ctr] = ary[i];
-	    ctr++;
+	    if(i + start < size){
+		ary2[i] = data[i + start];
+	    }else{
+		ary2[i] = data[ctr];
+		ctr++;
+	    }
 	}
 	ary = ary2;
 	start = 0;
@@ -26,10 +26,30 @@ public class MyDeque<T>{
     }
 
     public void addFirst(T value){
-	
+	if(size == 0){
+	    data[0] = value;
+	    start = 0;
+	    end = 0;
+	}else{
+	    if(size == data.length){
+		grow();
+	    }
+	    if(start != 0){
+		data[start - 1] = value;
+		start = start - 1;
+	    }else{
+		data[data.length - 1] = value;
+		start = data.length - 1;
+	    }
+	    size++;
+	}
     }
 
     public void addLast(T value){
-
+	if(size == 0){
+	    data[0] = value;
+	    start = 0;
+	    end = 0;
+	}
     }
 }
