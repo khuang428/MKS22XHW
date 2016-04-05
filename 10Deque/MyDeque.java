@@ -5,7 +5,7 @@ public class MyDeque<T>{
     private int start,end,size;
 
     @SuppressWarnings("unchecked")
-    public MyDeque(){
+	public MyDeque(){
 	data = (T[]) new Object[10];
     }
     
@@ -65,7 +65,37 @@ public class MyDeque<T>{
 	size++;
     }
 
-    
+    public T removeFirst(){
+	if(size == 0){
+	    throw new NoSuchElementException();
+	}else{
+	    T ret = data[start];
+	    data[start] = null;
+	    if(start == data.length - 1){
+		start = 0;
+	    }else{
+		start++;
+	    }
+	    size--;
+	    return ret;
+	}
+    }
+
+    public T removeLast(){
+	if(size == 0){
+	    throw new NoSuchElementException();
+	}else{
+	    T ret = data[end];
+	    data[end] = null;
+	    if(end == 0){
+		end = data.length - 1;
+	    }else{
+		end--;
+	    }
+	    size--;
+	    return ret;
+	}
+    }
 
     public T getFirst(){
 	if(size == 0){
