@@ -64,4 +64,22 @@ public class MyDeque<T>{
 	}
 	size++;
     }
+
+    
+
+    public T getFirst(){
+	if(size == 0){
+	    throw new NoSuchElementException();
+	}else{
+	    return data[start];
+	}
+    }
+
+    public T getLast(){
+	if(size == 0){
+	    throw new NoSuchElementException();
+	}else{
+	    return data[end];
+	}
+    }	
 }
