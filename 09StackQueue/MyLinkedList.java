@@ -36,7 +36,6 @@ public class MyLinkedList<T> implements Iterable<T>{
     int size;
     
     public Iterator<T> iterator(){
-	//This uses an anonymous class! You don't need to know this.
 	return new Iterator<T>()
 	    {
 		private LNode current = head;
@@ -57,6 +56,29 @@ public class MyLinkedList<T> implements Iterable<T>{
 		}
 	    };
     } 
+
+    public Iterator<T> backIterator(){
+	return new Iterator<T>()
+	    {
+		private LNode current = tail;
+
+		public boolean hasNext(){
+		    return current != null;
+		}
+		public T next(){
+		    if(!hasNext()){
+			throw new NoSuchElementException();
+		    }
+		    T value = current.getValue();
+		    current = current.getPrevious();
+		    return value;
+		}
+		public void remove(){
+		    throw new UnsupportedOperationException();
+		}
+	    };
+    } 
+
     public String toString(){
 	String ans = "[";
 	LNode p = head;
