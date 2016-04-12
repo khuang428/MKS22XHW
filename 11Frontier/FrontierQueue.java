@@ -6,7 +6,7 @@ public class FrontierQueue<T> implements Frontier<T>{
     }
 
     public T next(){
-	return q.peek();
+	return q.dequeue();
     }
 
     public boolean hasNext(){
