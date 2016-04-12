@@ -58,7 +58,7 @@ public class BetterMaze{
       Keep going until you find a solution or run out of elements on the frontier.
     **/
     public boolean solve(){  
-        
+        Node current = new Node(startRow,startCol,null);
 	return false;
     }    
      
