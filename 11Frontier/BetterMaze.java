@@ -6,12 +6,12 @@ public class BetterMaze{
     private boolean  animate;//default to false
 
     private class Node{
-	private int x,y;
+	private int row,col;
 	private Node prev;
 
-	public Node(int x, int y, Node prev){
-	    this.x = x;
-	    this.y = y;
+	public Node(int r, int c, Node prev){
+	    row = r;
+	    col = c;
 	    this.prev = prev;
 	}
 
@@ -19,8 +19,12 @@ public class BetterMaze{
 	    return prev;
 	}
 
-	public int[] getValue(){
-	    return {x,y};
+	public int getRow(){
+	    return row;
+	}
+
+	public int getCol(){
+	    return col;
 	}
     }
    /**return a COPY of solution.
@@ -39,21 +43,24 @@ public class BetterMaze{
     /**initialize the frontier as a queue and call solve
     **/
     public boolean solveBFS(){  
-        /** IMPLEMENT THIS **/      
+        placesToGo = new FrontierQueue<Node>();
+	return solve();
     }   
 
 
    /**initialize the frontier as a stack and call solve
     **/ 
     public boolean solveDFS(){  
-        /** IMPLEMENT THIS **/  
+        placesToGo = new FrontierStack<Node>();
+	return solve();
     }    
 
    /**Search for the end of the maze using the frontier. 
       Keep going until you find a solution or run out of elements on the frontier.
     **/
     public boolean solve(){  
-        /** IMPLEMENT THIS **/  
+        /** IMPLEMENT THIS **/
+	return false;
     }    
      
    /**mutator for the animate variable  **/
