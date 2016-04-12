@@ -10,9 +10,6 @@ public class FrontierQueue<T> implements Frontier<T>{
     }
 
     public boolean hasNext(){
-	if(q.peek() == null){
-	    return false;
-	}
-	return true;
+	return !q.isEmpty();
     }
 }

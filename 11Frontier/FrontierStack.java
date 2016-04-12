@@ -12,11 +12,6 @@ public class FrontierStack<T> implements Frontier<T>{
     }
 
     public boolean hasNext(){
-	try{
-	    s.peek();
-	}catch(EmptyStackException e){
-	    return false;
-	}
-	return true;
+	return !s.isEmpty();
     }
 }

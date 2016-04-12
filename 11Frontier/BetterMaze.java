@@ -1,9 +1,9 @@
 public class BetterMaze{
     private char[][] maze;
-    private int[]    solution;
-    private int      startRow,startCol;
+    private int[] solution;
+    private int startRow,startCol;
     private Frontier<Node> placesToGo;
-    private boolean  animate;//default to false
+    private boolean animate;//default to false
 
     private class Node{
 	private int row,col;
@@ -27,6 +27,7 @@ public class BetterMaze{
 	    return col;
 	}
     }
+
    /**return a COPY of solution.
      *This should be : [x1,y1,x2,y2,x3,y3...]
      *the coordinates of the solution from start to end.
@@ -39,14 +40,12 @@ public class BetterMaze{
         /** IMPLEMENT THIS **/      
     }    
 
-
     /**initialize the frontier as a queue and call solve
     **/
     public boolean solveBFS(){  
         placesToGo = new FrontierQueue<Node>();
 	return solve();
     }   
-
 
    /**initialize the frontier as a stack and call solve
     **/ 
@@ -59,7 +58,7 @@ public class BetterMaze{
       Keep going until you find a solution or run out of elements on the frontier.
     **/
     public boolean solve(){  
-        /** IMPLEMENT THIS **/
+        
 	return false;
     }    
      
@@ -67,7 +66,4 @@ public class BetterMaze{
     public void setAnimate(boolean b){
 	animate = b;
     }    
-
-
-
 }
