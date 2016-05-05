@@ -78,6 +78,19 @@ public class BSTree<T extends Comparable<T>>{
 	}
 
 	public boolean contains(T value){
+	    if(data.equals(value)){
+		return true;
+	    }
+	    if(left != null){
+		if(left.contains(value)){
+		    return true;
+		}
+	    }
+	    if(right != null){
+		if(right.contains(value)){
+		    return true;
+		}
+	    }
 	    return false;
 	}
     }
