@@ -74,20 +74,29 @@ public class BSTree<T extends Comparable<T>>{
 
     //OUTER methods here are wrapper methods for the root
     public int getHeight(){
-	//call the root's methods
-	//check for empty first!
+	if(root == null){
+	    return 0;
+	}
 	return root.height();
     }
 
     public void add(T value){
-	//check for empty before you do things with root.
+	if(root == null){
+	    root = new Node(value);
+	}else{
+	    root.add(value);
+	}
     }
     public String toString(){
-	//check for empty before you do things with root.
-	return "";
+	if(root == null){
+	    return "";
+	}
+	return root.toString();
     }
     public boolean contains(T value){
-	//check for empty before you do things with root.
-	return false;
+	if(root == null){
+	    return false;
+	}
+	return root.contains(value);
     }
 }
