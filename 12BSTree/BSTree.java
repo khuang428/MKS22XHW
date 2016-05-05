@@ -47,7 +47,19 @@ public class BSTree<T extends Comparable<T>>{
 	}
 
 	public void add(T value){
-	    
+	    if(value.compareTo(data) < 0){
+		if(left == null){
+		    left = new Node(value);
+		}else{
+		    left.add(value);
+		}
+	    }else{
+		if(right == null){
+		    right = new Node(value);
+		}else{
+		    right.add(value);
+		}
+	    }
 	}
 
 	public String toString(){
