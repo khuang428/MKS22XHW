@@ -1,9 +1,13 @@
-public class BSTree<T extends comparable<T>>{
+public class BSTree<T extends Comparable<T>>{
     private class Node{
 	T data;
 	Node left;
 	Node right;
 	
+	public Node(T data){
+	    this.data = data;
+	}
+
 	public void setData(T data){
 	    this.data = data;
 	}
@@ -29,15 +33,36 @@ public class BSTree<T extends comparable<T>>{
 	}
 
 	public int height(){ 
-	    return 0;
+	    int h1 = 0,h2 = 0;
+	    if(left == null && right == null){
+		return 1;
+	    }
+	    if(left != null){
+		h1 = left.height();
+	    }
+	    if(right != null){
+		h2 = right.height();
+	    }
+	    return Math.max(h1 + 1,h2 + 1);
 	}
 
 	public void add(T value){
-
+	    
 	}
 
 	public String toString(){
-	    return "";
+	    String retStr = "" + data + " ";
+	    if(left == null){
+		retStr += "_";
+	    }else{
+		retStr += left.toString();
+	    }
+	    if(right == null){
+		retStr += "_";
+	    }else{
+		retStr += right.toString();
+	    }
+	    return retStr;
 	}
 
 	public boolean contains(T value){
@@ -48,7 +73,7 @@ public class BSTree<T extends comparable<T>>{
     private Node root;
 
     //OUTER methods here are wrapper methods for the root
-    public getHeight(){
+    public int getHeight(){
 	//call the root's methods
 	//check for empty first!
 	return root.height();
