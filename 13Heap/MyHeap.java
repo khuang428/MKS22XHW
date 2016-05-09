@@ -3,12 +3,19 @@ import java.util.*;
 public class MyHeap<T extends Comparable<T>>{
    private int size;
    private T[] data;
+   private boolean isMax;
 
    public MyHeap(){
+       isMax = true;
        data = (T[])new Comparable[2];
    }
    public MyHeap(T[] array){
-       data = array; 
+       isMax = true;
+       size = array.length;
+       data = (T[])new Comparable[size + 1];
+       for(int i = 0;i < array.length;i++){
+	   data[i+1] = array[i];
+       }
        heapify();
    }
    private void pushDown(int k){
@@ -48,6 +55,17 @@ public class MyHeap<T extends Comparable<T>>{
    }
 
    //do this last
-   public MyHeap(boolean isMax){}
-   public MyHeap(T[] array, boolean isMax){}
+   public MyHeap(boolean isMax){
+       this.isMax = isMax;
+       data = (T[])new Comparable[2];
+   }
+   public MyHeap(T[] array, boolean isMax){
+       this.isMax = isMax;
+       size = array.length;
+       data = (T[])new Comparable[size + 1];
+       for(int i = 0;i < array.length;i++){
+	   data[i + 1] = array[i];
+       }
+       heapify();
+   }
 }
