@@ -19,6 +19,8 @@ public class MyHeap<T extends Comparable<T>>{
        heapify();
    }
    private void pushDown(int k){
+       T temp = data[k];
+       
        
    }
    private void pushUp(int k){
@@ -27,10 +29,19 @@ public class MyHeap<T extends Comparable<T>>{
 	   data[k/2] = temp;
    }
    private void heapify(){
-       
+       for(int i = size/2;i >0;i--){
+	   pushDown(i);
+       }
    }
    public T delete(){
-       return null;
+       if(size == 0){
+	   return null;
+       }
+       T temp = data[1];
+       data[1] = data[size - 1];
+       pushDown(1);
+       size--;
+       return temp;
    }
    public void add(T x){
        if(size == data.length){
@@ -40,6 +51,7 @@ public class MyHeap<T extends Comparable<T>>{
 	   data[1] = x;
        }else{
 	   data[size + 1] = x;
+	   pushUp(size + 1);
        }
        size++;
    }
