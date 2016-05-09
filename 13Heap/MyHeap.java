@@ -51,7 +51,12 @@ public class MyHeap<T extends Comparable<T>>{
        data = ary;
    }
    public String toString(){
-       return "";
+       String retStr = "";
+       for(int i = 0;i < data.length;i++){
+	   retStr += data[i] + ",";
+       }
+       retStr = retStr.substring(0,retStr.length() - 1) + "]";
+       return retStr;
    }
 
    //do this last
